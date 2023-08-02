@@ -1,0 +1,463 @@
+
+<!--
+
+    Standard Ant Build Script
+    =========================
+    (based off of Replete/resources/ant/template-build.xml)
+    * The only differences should be: sw_name_lower, version variables
+      main_class_name, classpath.manifest, external.libraries,
+      and any custom targets.
+
+    The public targets are:
+
+        build_app      - Cleans and builds software as a stand-alone app.
+        build_app_test - Cleans, builds software as a stand-alone app, and runs unit tests.
+        build_lib      - Cleans and builds software as an includable lib.
+        build_lib_test - Cleans, builds software as an includable lib, and runs unit tests.
+        clean          - Deletes previous build directory completely.
+
+    The final output for "app" mode (*_app* targets) is
+
+        build/deploy/<LIBNAME>-<VERSION>/lib/<LIBRARIES>
+        build/deploy/<LIBNAME>-<VERSION>/<LIBNAME>-<VERSION>.jar
+        build/deploy/<LIBNAME>-<VERSION>/VERSION
+
+    The final output for "lib" mode (*_lib* targets) is
+
+        build/deploy/<LIBNAME>-<VERSION>/<LIBNAME>-<VERSION>.jar
+        build/deploy/<LIBNAME>-<VERSION>/<LIBRARIES>
+        build/deploy/<LIBNAME>-<VERSION>/VERSION
+
+    Intermediate build files are stored in:
+
+        build/temp/
+
+    Any produced test results are stored in:
+
+        build/test/
+
+    You can choose to include/exclude the source code in/from
+    the JAR by changing the value of the "include.source" condition
+    variable.  You can choose to remove the temporary build files
+    by changing the "clean.temp" condition variable.
+
+-->
+
+<project name="WebComms" default="build_app" basedir=".">
+
+
+    <!--===================================================
+                      Environment Setup
+    ====================================================-->
+
+    <!-- Target JVM -->
+    <property name="target_jvm_version" value="1.8" />
+
+    <!-- Name -->
+    <property name="sw_name_lower" value="webcomms" />
+
+    <!-- Version (Major, Minor, Service, and Build) -->
+    <property name="sw_version_major"   value="1" />
+    <property name="sw_version_minor"   value="0" />
+    <property name="sw_version_service" value="0" />
+    <tstamp>
+        <format property="sw_version_build_pretty" pattern="yyyy-MM-dd HH:mm"/>
+    </tstamp>
+    <tstamp>
+        <format property="sw_version_build_file" pattern="'b'yyyyMMdd-HHmm"/>
+    </tstamp>
+    <property name="sw_version"             value="${sw_version_major}.${sw_version_minor}.${sw_version_service}" />
+    <property name="sw_version_full_pretty" value="${sw_version} (${sw_version_build_pretty})" />
+    <property name="sw_version_full_file"   value="${sw_version}.${sw_version_build_file}" />
+    <property name="sw_file_name"           value="${sw_name_lower}-${sw_version}" />
+    <property name="sw_file_name_full"      value="${sw_name_lower}-${sw_version_full_file}" />
+    <property name="sw_product_name"        value="${sw_file_name}" />                             <!-- Either sw_file_name or sw_file_name_full -->
+
+    <!-- Input files -->
+    <property name="src"  location="src" />
+    <property name="test" location="test" />
+    <property name="lib"  location="lib" />
+
+    <!-- Output files -->
+    <property name="build"                location="build" />
+    <property name="build_deploy"         location="${build}/deploy" />
+    <property name="build_deploy_product" location="${build_deploy}/${sw_product_name}" />
+    <property name="build_test"           location="${build}/test" />
+    <property name="build_temp"           location="${build}/temp" />
+
+    <!-- From workspace -->
+    <property name="build_temp_src"        location="${build_temp}/src" />
+    <property name="build_temp_test"       location="${build_temp}/test" />
+    <property name="build_temp_bin"        location="${build_temp}/bin" />
+    <property name="build_temp_bin_test"   location="${build_temp}/bin-test" />
+    <property name="build_temp_lib_mine"   location="${build_temp}/lib-mine" />
+    <property name="build_temp_lib_others" location="${build_temp}/lib-others" />
+
+    <!-- Main Class Name -->
+    <property name="main_class_name" value="gov.sandia.webcomms.http.HttpAppMain" />
+
+    <!-- Path to version constants file -->
+    <fileset dir="${src}" id="version.constants" includes="**/SoftwareVersion.java" />
+
+    <!-- Compile classpaths -->
+    <path id="classpath.manifest">
+        <fileset dir="${lib}">
+            <include name="**/*.jar" />
+            <exclude name="junit4/**" />
+        </fileset>
+        <fileset dir="../RepleteExternals/build/deploy">
+            <include name="**/replete-externals-*.jar" />
+        </fileset>
+        <fileset dir="../Replete/build/deploy">
+            <include name="**/replete-*.jar" />   <!-- Does duplicate replete-externals.jar for now -->
+        </fileset>
+        <fileset dir="../LighthouseInterface/build/deploy">
+            <include name="**/lighthouse-interface-*.jar" />
+        </fileset>
+        <fileset dir="../Cortext/build/deploy">
+            <include name="**/cortext-*.jar" />
+        </fileset>
+        <fileset dir="../MongoUtils/build/deploy">
+            <include name="**/mongoutils-*.jar" />
+        </fileset>
+    </path>
+    <path id="external.libraries.others">
+        <fileset dir="../RepleteExternals/build/deploy">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="../Replete/build/deploy">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="../LighthouseInterface/build/deploy">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="../Cortext/build/deploy">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="../MongoUtils/build/deploy">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+    <path id="external.libraries.mine">
+        <fileset dir="${lib}">
+            <include name="**/*.jar" />
+            <exclude name="junit4/**" />
+        </fileset>
+    </path>
+
+
+    <!--===================================================
+                          Conditions
+    ====================================================-->
+
+    <!-- Operating system -->
+    <condition property="isWindows">
+        <os family="windows" />
+    </condition>
+    <condition property="isNotWindows">
+        <not>
+            <os family="windows" />
+        </not>
+    </condition>
+
+    <!-- Source -->
+    <condition property="include.source">
+        <istrue value="true" />
+    </condition>
+    <condition property="build.source.zip">
+        <istrue value="false" />
+    </condition>
+    <condition property="clean.temp">
+        <istrue value="true" />
+    </condition>
+
+
+    <!--===================================================
+                      External Targets
+    ====================================================-->
+
+    <!-- Clean and Build (App) -->
+    <target name="build_app" depends="clean, set_mode_app, make_app_products, clean_temp"
+        description="Cleans and builds software as a stand-alone app.">
+    </target>
+
+    <!-- Clean, Build (App), and Test -->
+    <target name="build_app_test" depends="clean, set_mode_app, make_app_products, unit_test, clean_temp, unit_test_failure_check, unit_test_error_check"
+        description="Cleans, builds software as a stand-alone app, and runs unit tests.">
+    </target>
+
+    <!-- Clean and Build (Lib) -->
+    <target name="build_lib" depends="clean, set_mode_lib, make_app_products, clean_temp"
+        description="Cleans and builds software as an includable lib.">
+    </target>
+
+    <!-- Clean, Build (Lib), and Test -->
+    <target name="build_lib_test" depends="clean, set_mode_lib, make_app_products, unit_test, clean_temp, unit_test_failure_check, unit_test_error_check"
+        description="Cleans, builds software as an includable lib, and runs unit tests.">
+    </target>
+
+    <!-- Clean -->
+    <target name="clean" description="Deletes previous build directory completely.">
+        <delete dir="${build}" />
+    </target>
+
+
+    <!--===================================================
+                         Make Products
+    ====================================================-->
+
+    <!-- Create the JAR file that holds all the compiled
+         class files and supplemental files that comprise
+         the application and create a zip file containing
+         just the source code. -->
+    <target name="make_app_products" depends="make_app_jar, make_app_zip, write_version_file, copy_external_libraries" />
+
+    <!-- Place a JAR file with all the compiled code,
+         supplemental resources and possibly source
+         code into the deploy directory. -->
+    <target name="make_app_jar" depends="copy_bin_with_recompile, clean_build_num, compute_manifest_classpath">
+        <mkdir dir="${build_deploy_product}" />
+        <jar destfile="${build_deploy_product}/${sw_product_name}.jar" basedir="${build_temp_bin}">
+            <manifest>
+                <attribute name="Main-Class" value="${main_class_name}" />
+                <attribute name="Class-Path" value=". ${classpath.manifest.changed}" />
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- Place a ZIP file with all the source in the
+         deploy directory if the flag to include source
+         is set to true. -->
+    <target name="make_app_zip" depends="copy_src" if="build.source.zip">
+        <mkdir dir="${build_deploy_product}" />
+        <zip destfile="${build_deploy_product}/${sw_product_name}_src.zip" basedir="${build_temp_src}" update="true" />
+    </target>
+
+    <target name="write_version_file">
+        <echo message="Pretty: ${sw_version_full_pretty}${line.separator}" file="${build_deploy_product}/VERSION" />
+        <echo message="File:   ${sw_version_full_file}${line.separator}"   file="${build_deploy_product}/VERSION" append="true" />
+    </target>
+
+
+    <!--===================================================
+                            Compile     
+    ====================================================-->
+
+    <target name="copy_bin_with_recompile" depends="copy_external_libraries_to_temp_mine, copy_external_libraries_to_temp_others, copy_src, copy_src_to_bin">
+        <path id="classpath.compile.core">
+            <fileset dir="${build_temp_lib_mine}">    <!-- Mine has to be first here -->
+                <include name="**/*.jar" />
+            </fileset>
+            <fileset dir="${build_temp_lib_others}">
+                <include name="**/*.jar" />
+            </fileset>
+        </path>
+        <path id="classpath.compile.test">
+            <path refid="classpath.compile.core" />
+            <path path="${build_temp_bin}" />
+            <fileset dir="${lib}">
+                <include name="junit4/**" />
+            </fileset>
+        </path>
+
+        <mkdir dir="${build_temp_bin}"/>
+        <javac classpathref="classpath.compile.core"
+                destdir="${build_temp_bin}" deprecation="true"
+                fork="true" memoryMaximumSize="200m"
+                target="${target_jvm_version}" source="${target_jvm_version}"
+                classpath="${java.home}/lib/jfxrt.jar"
+                includeantruntime="false" encoding="UTF-8"
+                debug="true" debuglevel="lines,vars,source">
+            <compilerarg line="-XDignore.symbol.file" />
+            <src path="${build_temp_src}" />
+            <include name="**/*.java" />
+        </javac>
+
+        <!-- Compiles the test classes even if they won't be tested later -->
+        <mkdir dir="${build_temp_bin_test}"/>
+        <javac classpathref="classpath.compile.test"
+                destdir="${build_temp_bin_test}" deprecation="true"
+                fork="true" memoryMaximumSize="200m"
+                target="${target_jvm_version}" source="${target_jvm_version}"
+                classpath="${java.home}/lib/jfxrt.jar"
+                includeantruntime="false" encoding="UTF-8">
+            <compilerarg line="-XDignore.symbol.file" />
+            <src path="${build_temp_test}" />
+            <include name="**/*.java" />
+        </javac>
+
+        <!-- Copy supplemental files -->
+        <copy todir="${build_temp_bin}">
+            <fileset dir="${build_temp_src}" excludes="**/*.java"/>       <!-- .svn dirs excluded by default -->
+        </copy>
+        <copy todir="${build_temp_bin_test}">
+            <fileset dir="${build_temp_test}" excludes="**/*.java"/>      <!-- .svn dirs excluded by default -->
+        </copy>
+
+    </target>
+
+
+    <!--===================================================
+                         Copy Source    
+    ====================================================-->
+
+    <!-- Copy source files to source destination directory.
+         We do this so we can have completely separate copy
+         of the original source before anything build-related
+         happens, as sometimes we want to modify the source
+         during the build process.  Future: We might be able
+         to make this independent of the # of source folders
+         if we restructure to have all source folders under
+         'src/' (e.g. src/main, src/test, etc.) -->
+    <target name="copy_src">
+        <replaceregexp byline="true">
+            <regexp pattern="MAJOR   = .*;"/>
+            <substitution expression="MAJOR   = &quot;${sw_version_major}&quot;;" />
+            <fileset refid="version.constants" />
+        </replaceregexp>
+        <replaceregexp byline="true">
+            <regexp pattern="MINOR   = .*;"/>
+            <substitution expression="MINOR   = &quot;${sw_version_minor}&quot;;" />
+            <fileset refid="version.constants" />
+        </replaceregexp>
+        <replaceregexp byline="true">
+            <regexp pattern="SERVICE = .*;"/>
+            <substitution expression="SERVICE = &quot;${sw_version_service}&quot;;" />
+            <fileset refid="version.constants" />
+        </replaceregexp>
+        <replaceregexp byline="true">
+            <regexp pattern="BUILD   = .*;"/>
+            <substitution expression="BUILD   = &quot;${sw_version_build_pretty}&quot;;" />
+            <fileset refid="version.constants" />
+        </replaceregexp>
+
+        <copy todir="${build_temp_src}">
+            <fileset dir="${src}" />
+        </copy>
+        <copy todir="${build_temp_test}">
+            <fileset dir="${test}" />
+        </copy>
+    </target>
+
+    <target name="clean_build_num">
+        <replaceregexp byline="true">
+            <regexp pattern="BUILD   = .*;"/>
+            <substitution expression="BUILD   = null;" />
+            <fileset refid="version.constants" />
+        </replaceregexp>
+    </target>
+
+    <!-- Copy source files to where the class files will
+         be located if the flag to include source is
+         set to true. -->
+    <target name="copy_src_to_bin" if="include.source">
+        <copy todir="${build_temp_bin}">
+            <fileset dir="${build_temp_src}">
+                <include name="**/*.java" />
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="copy_external_libraries_to_temp_mine">
+        <mkdir dir="${build_temp_lib_mine}" />                    <!-- In case path is empty -->
+        <copy todir="${build_temp_lib_mine}" flatten="true" >
+            <path refid="external.libraries.mine" />
+        </copy>
+    </target>
+    <target name="copy_external_libraries_to_temp_others">
+        <mkdir dir="${build_temp_lib_others}" />                  <!-- In case path is empty -->
+        <copy todir="${build_temp_lib_others}" flatten="true" >
+            <path refid="external.libraries.others" />
+        </copy>
+    </target>
+
+    <target name="copy_external_libraries">
+        <copy todir="${build_deploy_product}/${mode_token}" flatten="true">
+            <fileset dir="${build_temp_lib_others}">
+                <include name="**/*.jar" />
+            </fileset>
+            <fileset dir="${build_temp_lib_mine}">      <!-- Guessing about order of others and mine here -->
+                <include name="**/*.jar" />
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- Compile classpath to manifest classpath conversion --> 
+    <target name="compute_manifest_classpath" depends="cmc_windows, cmc_not_windows" />
+    <target name="cmc_windows" if="isWindows">
+        <concat destfile="mf-temp.txt">${toString:classpath.manifest}<filterchain>
+            <replaceregex pattern="^[^;]*?[\\/]build[\\/]deploy([\\/][^\\/; ]+)*[\\/]" replace="${mode_token}" flags="g" />
+            <replaceregex pattern=";[^;]*?[\\/]build[\\/]deploy([\\/][^\\/; ]+)*[\\/]" replace=" ${mode_token}" flags="g" />
+            <replaceregex pattern="^[^;]*?[\\/]lib([\\/][^\\/; ]+)*[\\/]" replace="${mode_token}" flags="g" />
+            <replaceregex pattern=";[^;]*?[\\/]lib([\\/][^\\/; ]+)*[\\/]" replace=" ${mode_token}" flags="g" />
+            <replacestring from="\" to="/" />
+        </filterchain></concat>
+        <loadfile property="classpath.manifest.changed" srcFile="mf-temp.txt" />
+        <delete file="mf-temp.txt" />
+    </target>
+    <target name="cmc_not_windows" if="isNotWindows">
+        <concat destfile="mf-temp.txt">${toString:classpath.manifest}<filterchain>
+            <replaceregex pattern="^[^:]*?[\\/]build[\\/]deploy([\\/][^\\/: ]+)*[\\/]" replace="${mode_token}" flags="g" />
+            <replaceregex pattern=":[^:]*?[\\/]build[\\/]deploy([\\/][^\\/: ]+)*[\\/]" replace=" ${mode_token}" flags="g" />
+            <replaceregex pattern="^[^:]*?[\\/]lib([\\/][^\\/: ]+)*[\\/]" replace="${mode_token}" flags="g" />
+            <replaceregex pattern=":[^:]*?[\\/]lib([\\/][^\\/: ]+)*[\\/]" replace=" ${mode_token}" flags="g" />
+            <replacestring from="\" to="/" />
+        </filterchain></concat>
+        <loadfile property="classpath.manifest.changed" srcFile="mf-temp.txt" />
+        <delete file="mf-temp.txt" />
+    </target>
+
+
+    <!--===================================================
+                           Unit Testing
+    ====================================================-->
+
+    <target name="unit_test">
+        <mkdir dir="${build_test}/rawtestoutput"/>
+        <junit printsummary="true" failureproperty="junit.failure" errorproperty="junit.error" haltonfailure="no" haltonerror="no">
+            <classpath refid="classpath.compile.test"/>
+            <classpath path="${build_temp_bin}:${build_temp_bin_test}"/>
+            <batchtest todir="${build_test}/rawtestoutput" fork="true">
+                <fileset dir="${build_temp_bin_test}">
+                    <include name="**/*Test.class" />
+                    <exclude name="**/*$*.class"/>
+                </fileset>
+                <formatter type="plain" usefile="false" />
+                <formatter type="xml"/>
+            </batchtest>
+        </junit>
+        <junitreport todir="${build_test}">
+            <fileset dir="${build_test}/rawtestoutput"/>
+            <report todir="${build_test}/test-reports"/>
+        </junitreport>
+    </target>
+
+    <target name="unit_test_failure_check" if="junit.failure">
+        <fail message="JUnit tests had failures."/>
+    </target>
+
+    <target name="unit_test_error_check" if="junit.error">
+        <fail message="JUnit tests had errors."/>
+    </target>
+
+
+    <!--===================================================
+                              Clean
+    ====================================================-->
+
+    <target name="clean_temp" if="clean.temp">
+        <delete dir="${build_temp}" />
+    </target>
+
+
+    <!--===================================================
+                              Modes
+    ====================================================-->
+
+    <target name="set_mode_app">
+        <property name="mode_token" value="lib/" />
+    </target>
+    <target name="set_mode_lib">
+        <property name="mode_token" value="" />     <!-- Intentionally a zero-length string -->
+    </target>
+</project>

@@ -1,0 +1,227 @@
+<replete.xstream.SerializationResult>
+  <metadata>
+    <appName>&lt;unknown&gt;</appName>
+    <serializationDate>2017-03-25 02:03:29 AM</serializationDate>
+    <user>dtrumbo</user>
+    <serializationLib>XStream</serializationLib>
+    <serializationLibVersion>xstream-1.4.3/xpp3_min-1.1.4c</serializationLibVersion>
+    <targetObjectClass>gov.sandia.webcomms.http.rsc.HttpResource</targetObjectClass>
+  </metadata>
+  <targetObject class="gov.sandia.webcomms.http.rsc.HttpResource">
+    <originalUrl>http://cnn.com</originalUrl>
+    <cleanedUrl>http://cnn.com/</cleanedUrl>
+    <method>GET</method>
+    <providingIpPort>198.102.155.33:80</providingIpPort>
+    <contentType>text/html; charset=utf-8</contentType>
+    <responseCode>200</responseCode>
+    <responseMessage>OK</responseMessage>
+    <responseHeaders class="tree-map">
+      <entry>
+        <string>Accept-Ranges</string>
+        <string>bytes</string>
+      </entry>
+      <entry>
+        <string>Age</string>
+        <string>225</string>
+      </entry>
+      <entry>
+        <string>Cache-Control</string>
+        <string>max-age=60</string>
+      </entry>
+      <entry>
+        <string>Connection</string>
+        <string>keep-alive</string>
+      </entry>
+      <entry>
+        <string>Content-Length</string>
+        <string>129775</string>
+      </entry>
+      <entry>
+        <string>Content-Type</string>
+        <string>text/html; charset=utf-8</string>
+      </entry>
+      <entry>
+        <string>Date</string>
+        <string>Sat, 25 Mar 2017 08:03:29 GMT</string>
+      </entry>
+      <entry>
+        <string>Fastly-Debug-Digest</string>
+        <string>46be59e687681f2cbdc5286ab50024ed035dc360065b1aec7ce355bf418daeb9</string>
+      </entry>
+      <entry>
+        <string>Set-Cookie</string>
+        <string>geoData=Albuquerque|NM|87123|US|NA; Domain=.cnn.com; Path=/</string>
+      </entry>
+      <entry>
+        <string>Vary</string>
+        <string>Accept-Encoding</string>
+      </entry>
+      <entry>
+        <string>Via</string>
+        <string>1.1 varnish, 1.1 varnish, 1.0 sahp6008.sandia.gov (squid/3.1.23)</string>
+      </entry>
+      <entry>
+        <string>X-Cache</string>
+        <string>MISS from sahp6008.sandia.gov</string>
+      </entry>
+      <entry>
+        <string>X-Cache-Hits</string>
+        <string>1, 18</string>
+      </entry>
+      <entry>
+        <string>X-Cache-Lookup</string>
+        <string>MISS from sahp6008.sandia.gov:80</string>
+      </entry>
+      <entry>
+        <string>X-Served-By</string>
+        <string>cache-iad2129-IAD, cache-sjc3123-SJC</string>
+      </entry>
+      <entry>
+        <string>X-Timer</string>
+        <string>S1490429009.102686,VS0,VE0</string>
+      </entry>
+      <entry>
+        <string>access-control-allow-origin</string>
+        <string>*</string>
+      </entry>
+      <entry>
+        <string>content-security-policy</string>
+        <string>default-src &apos;self&apos; blob: https://*.cnn.com:* http://*.cnn.com:* *.cnn.io:* *.cnn.net:* *.turner.com:* *.turner.io:* *.ugdturner.com:* *.vgtf.net:*; script-src &apos;unsafe-eval&apos; &apos;unsafe-inline&apos; &apos;self&apos; *; style-src &apos;unsafe-inline&apos; &apos;self&apos; blob: *; child-src &apos;self&apos; blob: *; frame-src &apos;self&apos; *; object-src &apos;self&apos; *; img-src &apos;self&apos; data: blob: *; media-src &apos;self&apos; blob: *; font-src &apos;self&apos; data: *; connect-src &apos;self&apos; *;</string>
+      </entry>
+      <entry>
+        <string>x-content-type-options</string>
+        <string>nosniff</string>
+      </entry>
+      <entry>
+        <string>x-servedByHost</string>
+        <string>::ffff:10.61.5.146</string>
+      </entry>
+      <entry>
+        <string>x-xss-protection</string>
+        <string>1; mode=block</string>
+      </entry>
+    </responseHeaders>
+    <contentLength>129775</contentLength>
+    <reportedSize>129775</reportedSize>
+    <startDownload>1490429008229</startDownload>
+    <endDownload>1490429009523</endDownload>
+    <contentMd5Hash>18a3a4e10d3bf65c382364443fb569b8</contentMd5Hash>
+    <redirects>
+      <gov.sandia.webcomms.http.rsc.HttpRedirect>
+        <baseUrl>http://cnn.com/</baseUrl>
+        <originalUrl>http://www.cnn.com/</originalUrl>
+        <cleanedUrl>http://www.cnn.com/</cleanedUrl>
+        <providingIpPort>198.102.155.33:80</providingIpPort>
+        <responseCode>301</responseCode>
+        <responseMessage>Moved Permanently</responseMessage>
+        <responseHeaders class="tree-map">
+          <entry>
+            <string>Accept-Ranges</string>
+            <string>bytes</string>
+          </entry>
+          <entry>
+            <string>Connection</string>
+            <string>keep-alive</string>
+          </entry>
+          <entry>
+            <string>Content-Length</string>
+            <string>0</string>
+          </entry>
+          <entry>
+            <string>Date</string>
+            <string>Sat, 25 Mar 2017 08:03:28 GMT</string>
+          </entry>
+          <entry>
+            <string>Location</string>
+            <string>http://www.cnn.com/</string>
+          </entry>
+          <entry>
+            <string>Retry-After</string>
+            <string>0</string>
+          </entry>
+          <entry>
+            <string>Server</string>
+            <string>Varnish</string>
+          </entry>
+          <entry>
+            <string>Set-Cookie</string>
+            <string>geoData=Albuquerque|NM|87123|US|NA; Domain=.cnn.com; Path=/</string>
+          </entry>
+          <entry>
+            <string>Via</string>
+            <string>1.1 varnish, 1.0 sahp6008.sandia.gov (squid/3.1.23)</string>
+          </entry>
+          <entry>
+            <string>X-Cache</string>
+            <string>MISS from sahp6008.sandia.gov</string>
+          </entry>
+          <entry>
+            <string>X-Cache-Hits</string>
+            <string>0</string>
+          </entry>
+          <entry>
+            <string>X-Cache-Lookup</string>
+            <string>MISS from sahp6008.sandia.gov:80</string>
+          </entry>
+          <entry>
+            <string>X-Served-By</string>
+            <string>cache-sjc3627-SJC</string>
+          </entry>
+        </responseHeaders>
+        <reqInfo>
+          <userAgent>Apache-HttpClient/4.2.1 (java 1.5)</userAgent>
+          <headers class="tree-map">
+            <entry>
+              <string>Host</string>
+              <string>cnn.com</string>
+            </entry>
+            <entry>
+              <string>Proxy-Connection</string>
+              <string>Keep-Alive</string>
+            </entry>
+            <entry>
+              <string>User-Agent</string>
+              <string>Apache-HttpClient/4.2.1 (java 1.5)</string>
+            </entry>
+          </headers>
+          <knownIps>
+            <string>cnn.com/151.101.192.73</string>
+            <string>cnn.com/151.101.128.73</string>
+            <string>cnn.com/151.101.0.73</string>
+            <string>cnn.com/151.101.64.73</string>
+          </knownIps>
+        </reqInfo>
+        <content></content>
+      </gov.sandia.webcomms.http.rsc.HttpRedirect>
+    </redirects>
+    <redirectDisallowed>false</redirectDisallowed>
+    <reqInfo>
+      <userAgent>Apache-HttpClient/4.2.1 (java 1.5)</userAgent>
+      <headers class="tree-map">
+        <entry>
+          <string>Cookie</string>
+          <string>countryCode=US; geoData=Albuquerque|NM|87123|US|NA</string>
+        </entry>
+        <entry>
+          <string>Cookie2</string>
+          <string>$Version=1</string>
+        </entry>
+        <entry>
+          <string>Host</string>
+          <string>www.cnn.com</string>
+        </entry>
+        <entry>
+          <string>Proxy-Connection</string>
+          <string>Keep-Alive</string>
+        </entry>
+        <entry>
+          <string>User-Agent</string>
+          <string>Apache-HttpClient/4.2.1 (java 1.5)</string>
+        </entry>
+      </headers>
+      <knownIps>
+        <string>www.cnn.com/151.101.40.73</string>
+      </knownIps>
+    </reqInfo>
+  </targetObject>
+</replete.xstream.SerializationResult>

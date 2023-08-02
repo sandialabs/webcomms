@@ -1,0 +1,39 @@
+<replete.xstream.SerializationResult>
+  <metadata>
+    <appName>&lt;unknown&gt;</appName>
+    <serializationDate>2018-02-20 09:55:44 PM</serializationDate>
+    <user>dtrumbo</user>
+    <serializationLib>XStream</serializationLib>
+    <serializationLibVersion>xstream-1.4.3/xpp3_min-1.1.4c</serializationLibVersion>
+    <targetObjectClass>gov.sandia.webcomms.http.rsc.HttpResource</targetObjectClass>
+  </metadata>
+  <targetObject class="gov.sandia.webcomms.http.rsc.HttpResource">
+    <originalUrl>http://cnn.com</originalUrl>
+    <cleanedUrl>http://cnn.com/</cleanedUrl>
+    <method>GET</method>
+    <responseCode>0</responseCode>
+    <contentLength>-1</contentLength>
+    <contentDeclined>false</contentDeclined>
+    <reportedSize>0</reportedSize>
+    <exceptionSnapshot>
+      <className>replete.errors.IntentionalDebugException</className>
+      <message>Debug Exception</message>
+      <completeText>replete.errors.IntentionalDebugException: Debug Exception&#xd;
+    at replete.errors.ExceptionUtil.toss(ExceptionUtil.java:153)&#xd;
+    at replete.errors.ExceptionUtil.toss(ExceptionUtil.java:150)&#xd;
+    at gov.sandia.webcomms.http.Http.requestIntoResource(Http.java:786)&#xd;
+    at gov.sandia.webcomms.http.Http.requestInner1(Http.java:648)&#xd;
+    at gov.sandia.webcomms.http.Http.requestInner0(Http.java:600)&#xd;
+    at gov.sandia.webcomms.http.Http.request(Http.java:589)&#xd;
+    at gov.sandia.webcomms.http.Http.convenienceRequest(Http.java:520)&#xd;
+    at gov.sandia.webcomms.http.Http.doGet(Http.java:482)&#xd;
+    at gov.sandia.webcomms.http.Http.doGet(Http.java:479)&#xd;
+    at gov.sandia.webcomms.http.rsc.HttpResourceTest.render(HttpResourceTest.java:103)&#xd;
+</completeText>
+    </exceptionSnapshot>
+    <startDownload>1519188943875</startDownload>
+    <endDownload>1519188943880</endDownload>
+    <redirectDisallowed>false</redirectDisallowed>
+    <ignoredSslProblems>false</ignoredSslProblems>
+  </targetObject>
+</replete.xstream.SerializationResult>

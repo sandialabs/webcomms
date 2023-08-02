@@ -1,0 +1,32 @@
+HTTP Resource
+=============
+Original URL:       http://cnn.com
+Cleaned URL:        http://cnn.com/
+Method:             GET
+Providing URL:      http://cnn.com/
+Providing IP/Port:  198.102.155.33:80 (wwwproxy.sandia.gov)
+Content Type:       text/html; charset=utf-8
+MIME Type (^ConTp): text/html
+MIME Type (Tika):   (None)
+Character Encoding: utf-8
+Content Encoding:   (None)
+Response Code:      200
+Response Message:   OK
+Response Headers:   (None)
+Redirects:          (None)
+Redir Disallowed?   No
+Security Info:      (None)
+    * For https URLs, this will not be populated if the connection to the server was already
+    * open and reused due to another URL being recently fetched from the same host over SSL.
+    * This will be corrected in the future.  This also affects the 'ignoreSslProblems' flag.
+SSL Probs. Ignored: false
+Content:            (None)
+Content MD5:        (None)
+Returned Size:      (N/A)
+Reported Size:      129,775 bytes
+DL Start Time:      1490429198719 (2017-03-25 02:06:38 AM)
+DL End Time:        1490429199782 (2017-03-25 02:06:39 AM)
+DL Duration:        1 s 63 ms
+Request Info:       (None)
+IsError?            No
+Exception:          (None)

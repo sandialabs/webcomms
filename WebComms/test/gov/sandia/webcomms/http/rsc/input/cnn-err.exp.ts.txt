@@ -1,0 +1,43 @@
+HTTP Resource
+=============
+Original URL:       http://cnn.com
+Cleaned URL:        http://cnn.com/
+Method:             GET
+Providing URL:      http://cnn.com/
+Providing IP/Port:  (None)
+Content Type:       (None)
+MIME Type (^ConTp): (None)
+MIME Type (Tika):   (None)
+Character Encoding: (None) (Default: ISO-8859-1)
+Content Encoding:   (None)
+Response Code:      0
+Response Message:   (None)
+Response Headers:   (None)
+Redirects:          (None)
+Redir Disallowed?   No
+Security Info:      (None)
+    * For https URLs, this will not be populated if the connection to the server was already
+    * open and reused due to another URL being recently fetched from the same host over SSL.
+    * This will be corrected in the future.  This also affects the 'ignoreSslProblems' flag.
+SSL Probs. Ignored: false
+Content:            (None)
+Content MD5:        (None)
+Returned Size:      (N/A)
+Reported Size:      0 bytes
+DL Start Time:      1519188943875 (2018-02-20 09:55:43 PM)
+DL End Time:        1519188943880 (2018-02-20 09:55:43 PM)
+DL Duration:        5 ms
+Request Info:       (None)
+IsError?            Yes
+Exception:          replete.errors.IntentionalDebugException: Debug Exception
+replete.errors.IntentionalDebugException: Debug Exception
+    at replete.errors.ExceptionUtil.toss(ExceptionUtil.java:153)
+    at replete.errors.ExceptionUtil.toss(ExceptionUtil.java:150)
+    at gov.sandia.webcomms.http.Http.requestIntoResource(Http.java:786)
+    at gov.sandia.webcomms.http.Http.requestInner1(Http.java:648)
+    at gov.sandia.webcomms.http.Http.requestInner0(Http.java:600)
+    at gov.sandia.webcomms.http.Http.request(Http.java:589)
+    at gov.sandia.webcomms.http.Http.convenienceRequest(Http.java:520)
+    at gov.sandia.webcomms.http.Http.doGet(Http.java:482)
+    at gov.sandia.webcomms.http.Http.doGet(Http.java:479)
+    at gov.sandia.webcomms.http.rsc.HttpResourceTest.render(HttpResourceTest.java:103)

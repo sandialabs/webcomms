@@ -1,0 +1,52 @@
+HTTP Resource
+=============
+Original URL:       https://time.org
+Cleaned URL:        https://time.org/
+Method:             GET
+Providing URL:      https://time.org/
+Providing IP/Port:  198.102.155.33:80 (wwwproxy.sandia.gov)
+Content Type:       text/html
+MIME Type (^ConTp): text/html
+MIME Type (Tika):   application/xhtml+xml
+Character Encoding: ISO-8859-1
+Content Encoding:   (None)
+Response Code:      200
+Response Message:   OK
+Response Headers:   (Count: 6)
+    Age:               0
+    Connection:        Keep-Alive
+    Content-Type:      text/html
+    Date:              Sat, 09 Dec 2017 09:10:00 GMT
+    Server:            Apache
+    Transfer-Encoding: chunked
+Redirects:          (None)
+Redir Disallowed?   No
+Security Info:
+    Host Name:               time.org
+    Auth Type:               ECDHE_RSA
+    Trust Manager Error:     (None)
+    Hostname Verifier Error: (None)
+    Certificates:            (Count: 1)
+        #0: SN=7462713944059150336 (v3)
+            Issuer:          1.2.840.113549.1.9.1=#161d70726f78792d696e74657263657074696f6e4073616e6469612e676f76,CN=https-interception.sandia.gov,OU=Infrastructure Computing Services,O=Sandia National Laboratories,L=Albuquerque,ST=New Mexico,C=US
+            Subject:         CN=x2.higgs.net
+            SubjectAltNames: higgs.com, higgs.net, time.org, www.higgs.com, www.higgs.net, www.time.org, x2.higgs.net
+            Valid Dates:     2017-10-22 12:30:20 AM <to> 2018-01-19 11:30:20 PM
+SSL Probs. Ignored: false
+Content:            <14,971 bytes> (Preview: <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">[NL]<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/index.dwt" codeOutsideHTMLIsLocked="false" -->[NL]<head>[NL]<!-- Start Meta Tags -->[NL]<meta http-equiv="refresh" content="60;URL=http://www.time.org/" />[NL]<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />[NL]<meta http-equiv="cache-control" content="no-cache" />[NL]<meta http-equiv="...)
+Content MD5:        1a638fc1e9e24cdfeced86d0daf9590c
+Returned Size:      14,971 bytes
+Reported Size:      (None)
+DL Start Time:      1512810599078 (2017-12-09 02:09:59 AM)
+DL End Time:        1512810601656 (2017-12-09 02:10:01 AM)
+DL Duration:        2 s 578 ms
+Request Info:
+    User Agent:      Apache-HttpClient/4.2.1 (java 1.5)
+    Request Headers: (Count: 3)
+        Connection: Keep-Alive
+        Host:       time.org
+        User-Agent: Apache-HttpClient/4.2.1 (java 1.5)
+    Known IPs:       (Count: 1)
+        time.org/96.64.130.236
+IsError?            No
+Exception:          (None)

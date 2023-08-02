@@ -1,0 +1,24 @@
+<replete.xstream.SerializationResult>
+  <metadata>
+    <appName>&lt;unknown&gt;</appName>
+    <serializationDate>2017-03-25 02:06:39 AM</serializationDate>
+    <user>dtrumbo</user>
+    <serializationLib>XStream</serializationLib>
+    <serializationLibVersion>xstream-1.4.3/xpp3_min-1.1.4c</serializationLibVersion>
+    <targetObjectClass>gov.sandia.webcomms.http.rsc.HttpResource</targetObjectClass>
+  </metadata>
+  <targetObject class="gov.sandia.webcomms.http.rsc.HttpResource">
+    <originalUrl>http://cnn.com</originalUrl>
+    <cleanedUrl>http://cnn.com/</cleanedUrl>
+    <method>GET</method>
+    <providingIpPort>198.102.155.33:80</providingIpPort>
+    <contentType>text/html; charset=utf-8</contentType>
+    <responseCode>200</responseCode>
+    <responseMessage>OK</responseMessage>
+    <contentLength>-1</contentLength>
+    <reportedSize>129775</reportedSize>
+    <startDownload>1490429198719</startDownload>
+    <endDownload>1490429199782</endDownload>
+    <redirectDisallowed>false</redirectDisallowed>
+  </targetObject>
+</replete.xstream.SerializationResult>

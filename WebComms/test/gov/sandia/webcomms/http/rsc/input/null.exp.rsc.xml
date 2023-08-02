@@ -1,0 +1,26 @@
+<replete.xstream.SerializationResult>
+  <metadata>
+    <appName>&lt;unknown&gt;</appName>
+    <serializationDate>2018-02-20 10:22:20 PM</serializationDate>
+    <user>dtrumbo</user>
+    <serializationLib>XStream</serializationLib>
+    <serializationLibVersion>xstream-1.4.3/xpp3_min-1.1.4c</serializationLibVersion>
+    <targetObjectClass>gov.sandia.webcomms.http.rsc.HttpResource</targetObjectClass>
+  </metadata>
+  <targetObject class="gov.sandia.webcomms.http.rsc.HttpResource">
+    <responseCode>0</responseCode>
+    <contentLength>-1</contentLength>
+    <contentDeclined>false</contentDeclined>
+    <reportedSize>0</reportedSize>
+    <exceptionSnapshot>
+      <className>gov.sandia.webcomms.http.errors.HttpUrlNullException</className>
+      <message>Resource cannot have null original URL</message>
+      <completeText>gov.sandia.webcomms.http.errors.HttpUrlNullException: Resource cannot have null original URL&#xd;
+</completeText>
+    </exceptionSnapshot>
+    <startDownload>0</startDownload>
+    <endDownload>0</endDownload>
+    <redirectDisallowed>false</redirectDisallowed>
+    <ignoredSslProblems>false</ignoredSslProblems>
+  </targetObject>
+</replete.xstream.SerializationResult>

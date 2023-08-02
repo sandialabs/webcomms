@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/httpclient-4.2.1/httpclient-4.2.1.jar" sourcepath="lib/httpclient-4.2.1/httpcomponents-client-4.2.1-src.zip"/>
+	<classpathentry kind="lib" path="lib/httpclient-4.2.1/httpcore-4.2.1.jar" sourcepath="lib/httpclient-4.2.1/httpcomponents-core-4.2.1-src.zip"/>
+	<classpathentry kind="lib" path="lib/httpclient-4.2.1/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.17/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="lib/mongo-java-driver-3.5.0/mongo-java-driver-3.5.0.jar" sourcepath="lib/mongo-java-driver-3.5.0/mongo-java-driver-r3.5.0.zip"/>
+	<classpathentry kind="lib" path="lib/morphia-1.3.2/morphia-1.3.2.jar" sourcepath="lib/morphia-1.3.2/morphia-r1.3.2.zip"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Cortext"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/MongoUtils"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Replete"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/RepleteExternals"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/LighthouseInterface"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

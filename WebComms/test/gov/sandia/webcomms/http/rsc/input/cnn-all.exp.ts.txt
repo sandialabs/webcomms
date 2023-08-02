@@ -1,0 +1,96 @@
+HTTP Resource
+=============
+Original URL:       http://cnn.com
+Cleaned URL:        http://cnn.com/
+Method:             GET
+Providing URL:      http://www.cnn.com/
+Providing IP/Port:  198.102.155.33:80 (wwwproxy.sandia.gov)
+Content Type:       text/html; charset=utf-8
+MIME Type (^ConTp): text/html
+MIME Type (Tika):   text/html
+Character Encoding: utf-8
+Content Encoding:   (None)
+Response Code:      200
+Response Message:   OK
+Response Headers:   (Count: 21)
+    Accept-Ranges:               bytes
+    Age:                         225
+    Cache-Control:               max-age=60
+    Connection:                  keep-alive
+    Content-Length:              129775
+    Content-Type:                text/html; charset=utf-8
+    Date:                        Sat, 25 Mar 2017 08:03:29 GMT
+    Fastly-Debug-Digest:         46be59e687681f2cbdc5286ab50024ed035dc360065b1aec7ce355bf418daeb9
+    Set-Cookie:                  geoData=Albuquerque|NM|87123|US|NA; Domain=.cnn.com; Path=/
+    Vary:                        Accept-Encoding
+    Via:                         1.1 varnish, 1.1 varnish, 1.0 sahp6008.sandia.gov (squid/3.1.23)
+    X-Cache:                     MISS from sahp6008.sandia.gov
+    X-Cache-Hits:                1, 18
+    X-Cache-Lookup:              MISS from sahp6008.sandia.gov:80
+    X-Served-By:                 cache-iad2129-IAD, cache-sjc3123-SJC
+    X-Timer:                     S1490429009.102686,VS0,VE0
+    access-control-allow-origin: *
+    content-security-policy:     default-src 'self' blob: https://*.cnn.com:* http://*.cnn.com:* *.cnn.io:* *.cnn.net:* *.turner.com:* *.turner.io:* *.ugdturner.com:* *.vgtf.net:*; script-src 'unsafe-eval' 'unsafe-inline' 'self' *; style-src 'unsafe-inline' 'self' blob: *; child-src 'self' blob: *; frame-src 'self' *; object-src 'self' *; img-src 'self' data: blob: *; media-src 'self' blob: *; font-src 'self' data: *; connect-src 'self' *;
+    x-content-type-options:      nosniff
+    x-servedByHost:              ::ffff:10.61.5.146
+    x-xss-protection:            1; mode=block
+Redirects:          (Count: 1)
+    #0: <301:Moved Permanently> (to-->) http://www.cnn.com/
+        Source Cleaned URL: http://cnn.com/
+        Dest. Original URL: http://www.cnn.com/
+        Dest. Cleaned URL:  http://www.cnn.com/
+        Providing IP/Port:  198.102.155.33:80 (wwwproxy.sandia.gov)
+        Character Encoding: (None) (Default: ISO-8859-1)
+        Response Code:      301
+        Response Message:   Moved Permanently
+        Response Headers:   (Count: 13)
+            Accept-Ranges:  bytes
+            Connection:     keep-alive
+            Content-Length: 0
+            Date:           Sat, 25 Mar 2017 08:03:28 GMT
+            Location:       http://www.cnn.com/
+            Retry-After:    0
+            Server:         Varnish
+            Set-Cookie:     geoData=Albuquerque|NM|87123|US|NA; Domain=.cnn.com; Path=/
+            Via:            1.1 varnish, 1.0 sahp6008.sandia.gov (squid/3.1.23)
+            X-Cache:        MISS from sahp6008.sandia.gov
+            X-Cache-Hits:   0
+            X-Cache-Lookup: MISS from sahp6008.sandia.gov:80
+            X-Served-By:    cache-sjc3627-SJC
+        Response Content:   <0 bytes>
+        Request Info:
+            User Agent:      Apache-HttpClient/4.2.1 (java 1.5)
+            Request Headers: (Count: 3)
+                Host:             cnn.com
+                Proxy-Connection: Keep-Alive
+                User-Agent:       Apache-HttpClient/4.2.1 (java 1.5)
+            Known IPs:       (Count: 4)
+                cnn.com/151.101.192.73
+                cnn.com/151.101.128.73
+                cnn.com/151.101.0.73
+                cnn.com/151.101.64.73
+Redir Disallowed?   No
+Security Info:      (None)
+    * For https URLs, this will not be populated if the connection to the server was already
+    * open and reused due to another URL being recently fetched from the same host over SSL.
+    * This will be corrected in the future.  This also affects the 'ignoreSslProblems' flag.
+SSL Probs. Ignored: false
+Content:            <129,775 bytes> (Preview: <!DOCTYPE html><html class="no-js"><head><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><meta charset="utf-8"><meta content="text/html" http-equiv="Content-Type"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"><link href="/favicon.ie9.ico" rel="Shortcut Icon" type="image/x-icon"/><link href="//i.cdn.turner.com/cnn/.e/img/3.0/global/misc/apple-touch-icon.png" rel="apple-touch-icon" type="image/png"/><!--[if lte IE 9]><meta http-equiv="refres...)
+Content MD5:        18a3a4e10d3bf65c382364443fb569b8
+Returned Size:      129,775 bytes
+Reported Size:      129,775 bytes
+DL Start Time:      1490429008229 (2017-03-25 02:03:28 AM)
+DL End Time:        1490429009523 (2017-03-25 02:03:29 AM)
+DL Duration:        1 s 294 ms
+Request Info:
+    User Agent:      Apache-HttpClient/4.2.1 (java 1.5)
+    Request Headers: (Count: 5)
+        Cookie:           countryCode=US; geoData=Albuquerque|NM|87123|US|NA
+        Cookie2:          $Version=1
+        Host:             www.cnn.com
+        Proxy-Connection: Keep-Alive
+        User-Agent:       Apache-HttpClient/4.2.1 (java 1.5)
+    Known IPs:       (Count: 1)
+        www.cnn.com/151.101.40.73
+IsError?            No
+Exception:          (None)

@@ -1,0 +1,96 @@
+<replete.xstream.SerializationResult>
+  <metadata>
+    <appName>&lt;unknown&gt;</appName>
+    <serializationDate>2017-12-09 02:10:02 AM</serializationDate>
+    <user>dtrumbo</user>
+    <serializationLib>XStream</serializationLib>
+    <serializationLibVersion>xstream-1.4.3/xpp3_min-1.1.4c</serializationLibVersion>
+    <targetObjectClass>gov.sandia.webcomms.http.rsc.HttpResource</targetObjectClass>
+  </metadata>
+  <targetObject class="gov.sandia.webcomms.http.rsc.HttpResource">
+    <originalUrl>https://time.org</originalUrl>
+    <cleanedUrl>https://time.org/</cleanedUrl>
+    <method>GET</method>
+    <providingIpPort>198.102.155.33:80</providingIpPort>
+    <contentType>text/html</contentType>
+    <responseCode>200</responseCode>
+    <responseMessage>OK</responseMessage>
+    <responseHeaders class="tree-map">
+      <entry>
+        <string>Age</string>
+        <string>0</string>
+      </entry>
+      <entry>
+        <string>Connection</string>
+        <string>Keep-Alive</string>
+      </entry>
+      <entry>
+        <string>Content-Type</string>
+        <string>text/html</string>
+      </entry>
+      <entry>
+        <string>Date</string>
+        <string>Sat, 09 Dec 2017 09:10:00 GMT</string>
+      </entry>
+      <entry>
+        <string>Server</string>
+        <string>Apache</string>
+      </entry>
+      <entry>
+        <string>Transfer-Encoding</string>
+        <string>chunked</string>
+      </entry>
+    </responseHeaders>
+    <contentLength>14971</contentLength>
+    <contentDeclined>false</contentDeclined>
+    <reportedSize>-1</reportedSize>
+    <startDownload>1512810599078</startDownload>
+    <endDownload>1512810601656</endDownload>
+    <contentMd5Hash>1a638fc1e9e24cdfeced86d0daf9590c</contentMd5Hash>
+    <redirectDisallowed>false</redirectDisallowed>
+    <secInfo>
+      <hostName>time.org</hostName>
+      <authType>ECDHE_RSA</authType>
+      <numCerts>1</numCerts>
+      <certs>
+        <gov.sandia.webcomms.http.rsc.CertificateInfo>
+          <serialNumber>7462713944059150336</serialNumber>
+          <version>3</version>
+          <issuerDn>1.2.840.113549.1.9.1=#161d70726f78792d696e74657263657074696f6e4073616e6469612e676f76,CN=https-interception.sandia.gov,OU=Infrastructure Computing Services,O=Sandia National Laboratories,L=Albuquerque,ST=New Mexico,C=US</issuerDn>
+          <subjectDn>CN=x2.higgs.net</subjectDn>
+          <subjectAltDnsNames>
+            <string>higgs.com</string>
+            <string>higgs.net</string>
+            <string>time.org</string>
+            <string>www.higgs.com</string>
+            <string>www.higgs.net</string>
+            <string>www.time.org</string>
+            <string>x2.higgs.net</string>
+          </subjectAltDnsNames>
+          <notBefore>2017-10-22 06:30:20.0 UTC</notBefore>
+          <notAfter>2018-01-20 06:30:20.0 UTC</notAfter>
+        </gov.sandia.webcomms.http.rsc.CertificateInfo>
+      </certs>
+    </secInfo>
+    <reqInfo>
+      <userAgent>Apache-HttpClient/4.2.1 (java 1.5)</userAgent>
+      <headers class="tree-map">
+        <entry>
+          <string>Connection</string>
+          <string>Keep-Alive</string>
+        </entry>
+        <entry>
+          <string>Host</string>
+          <string>time.org</string>
+        </entry>
+        <entry>
+          <string>User-Agent</string>
+          <string>Apache-HttpClient/4.2.1 (java 1.5)</string>
+        </entry>
+      </headers>
+      <knownIps>
+        <string>time.org/96.64.130.236</string>
+      </knownIps>
+    </reqInfo>
+  </targetObject>
+</replete.xstream.SerializationResult>

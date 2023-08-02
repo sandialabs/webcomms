@@ -1,0 +1,33 @@
+HTTP Resource
+=============
+Original URL:       (None)
+Cleaned URL:        (None)
+Method:             (None)
+Providing URL:      (None)
+Providing IP/Port:  (None)
+Content Type:       (None)
+MIME Type (^ConTp): (None)
+MIME Type (Tika):   (None)
+Character Encoding: (None) (Default: ISO-8859-1)
+Content Encoding:   (None)
+Response Code:      0
+Response Message:   (None)
+Response Headers:   (None)
+Redirects:          (None)
+Redir Disallowed?   No
+Security Info:      (None)
+    * For https URLs, this will not be populated if the connection to the server was already
+    * open and reused due to another URL being recently fetched from the same host over SSL.
+    * This will be corrected in the future.  This also affects the 'ignoreSslProblems' flag.
+SSL Probs. Ignored: false
+Content:            (None)
+Content MD5:        (None)
+Returned Size:      (N/A)
+Reported Size:      0 bytes
+DL Start Time:      (N/A)
+DL End Time:        (N/A)
+DL Duration:        (N/A)
+Request Info:       (None)
+IsError?            Yes
+Exception:          gov.sandia.webcomms.http.errors.HttpUrlNullException: Resource cannot have null original URL
+gov.sandia.webcomms.http.errors.HttpUrlNullException: Resource cannot have null original URL

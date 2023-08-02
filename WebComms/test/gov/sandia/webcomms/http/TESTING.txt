@@ -1,0 +1,102 @@
+
+How to test WebComms?
+=====================
+
+Major Groups
+1. Downloading Resources
+2. Supplemental
+ - Individual Utility / Supplemental Testing
+   * URI Cleaning [DONE]
+   * HttpResource toString [DONE]
+   * Encoding Util [DONE]
+   * UrlStats
+   * Interhost Link Counts
+   * Random URL Generator
+
+Connectivity Categories
+1. Does not connect to internet
+ - Does not need internet connectivity
+ - Generally will be using preemptors
+2. Connects to Development Lighthouse @ localhost
+ - Does not need internet connectivity
+3. Connects to Production Lighthouse @ SRN or RackSpace
+ - Same as #2 BUT...
+   * May not have all the features/bug fixes/updates as #2
+   * Theoretically always up, whereas developer has to 
+     remember to start their developer Lighthouse
+   * Have to be connected to the network or internet
+4. Connects to Internet
+ - Check IP addresses
+ - High variability
+ - Hard to write robust unit tests
+ - Have to be connected to the internet
+   * Domain names that should never exist (adfsalfkfjlskjfalfk.com)
+
+Other Categories That Need Testing
+
+ - Errors: That every ERROR gets thrown, and appropriately
+   * Replace known throwables
+ - Extensions: That all extensions get loaded appropriately and exercised properly
+   * What happens on not loaded properly?  Make sure error is very visible
+ - That all of the "internal" classes are performing as expected
+ - That thread resource info is working properly
+ - That every option performs correctly
+   * That every "code block" option performs correctly
+ - That HttpResource objects are properly populated
+   * Basic Info
+   * Content Fields
+   * Security / Cert Info
+   * Redirect Info
+   * Request Info
+   * Client Resource
+ - Http State
+   * Counts
+   * Codes
+   * Errors
+   * Headers
+   * Stats
+   * Abort Request
+   * Conn Timeout
+ - Apache HTTP Client Internals
+   * Connection Manager / Connection Pool
+   * Proxy Settings Work
+ - State of the Internet
+   * Slow
+   * Domain names that don't exist
+   * Servers that do not respond
+   * Server requests that take a long time to respond
+
+OPTIONAL / NOT NEEDED
+ - Country Code / Wikipedia download
+ - DbipGeoDataLoader
+ - Logging
+ - Plugin
+ - Http.preemptiveAuth
+
+
+1. Preemptor Tests
+  - 
+
+2 (a/b). Lighthouse Tests
+  - Test every endpoint?  Should Lighthouse test its own endpoints?
+  - Use Lighthouse to test majority of Http functionality with no variance
+
+3. Wild Tests
+  - Use wild tests to "attempt" to test at least SOME of the functionality in #2, knowing that wild has variance
+  - Use wild tests to test only things that can be tested in the wild (e.g. DNS names)
+
+
+2/a & 2/b CAN USE SIMLIAR TESTS
+  - Can just change the domain name (localhost:8080; av-lighthouse.sandia.gov; 164.73.120.210; lighthouse.com)
+  - Possible that tests can fail depending on the domain name if the Lighthouse version
+
+2 & 3 CAN USE SIMILAR TESTS
+  - Both a call to lighthouse:8080/ping and cnn.com/index.html should not have sec info if not wanted
+  - Even if the above... we theoretically shouldn't NEED to test both for something like SECINFO==null,
+    if we make it SIMPLE to just go ahead and test both anyway, then it should be fine.
+
+Whereas what we need for testing is
+  [Whether or not] these two objects are "acceptably similar"
+  [Whether or not] the distance between these two objects is "small enough" (not needed but just different wording)
+  
+"Acceptably similar" is whether or not a long hierarchical series of discrete rules are met.
